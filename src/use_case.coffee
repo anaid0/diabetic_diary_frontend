@@ -31,10 +31,14 @@ class Dose
   constructor: (@value, @insulin_type) ->
 
 class Meal
+  @ww
   constructor: (@meal_items, @carbs, @kcal, @wbt) ->
+    @ww = @carbs/10
 
 class MealItem
-  contructor: (@name, @weight, @carbs, @kcal, @wbt) ->
+  @ww
+  constructor: (@name, @weight, @carbs, @kcal, @wbt) ->
+    @ww = @carbs/10
 
 class Activity
   constructor: (@time, @type) ->
