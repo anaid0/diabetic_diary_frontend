@@ -1,0 +1,169 @@
+/*
+klasy:
+...main
+add-new-entry-button
+entries-list
+	...entry
+		...entry-label
+			...datetime
+			...right
+			...left
+		...entry-item
+
+new-entry-form
+edit-entry-form
+remove-entry
+
+buttons:
+delete
+edit
+*/
+
+html,
+body {
+	margin: 20px auto;
+	width:1200px;
+	font-size:13px;
+	font-family:Arial;
+}
+.main {
+	margin: auto;
+	width:800px;
+	padding:20px;
+	margin:0px auto;
+	background-color:#FFF8F0;
+}
+
+.main h1 {
+	text-align: center;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.center {
+	float: center;
+}
+
+.entry {
+	background-color:#F1E7DF;
+	padding:5px;
+	margin:5px auto;
+	border:2px solid #000000;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+
+.entry-item {
+	padding: 5px;
+	margin: 5px;
+	background-color: rgb(250, 244, 239);
+}
+
+.entry-label {
+	padding: 5px;
+	font-size:16px;
+	font-weight: bolder;
+}
+
+.datetime {
+	clear: left;
+	font-size:13px;
+	font-weight: normal;
+}
+
+.entry label {
+	font-size:15px;
+	font-weight: bold;
+}
+
+.delete-button {
+background:url(../images/delete-button-image.png) no-repeat;
+cursor:pointer;
+width: 25px;
+height: 25px;
+border: none;
+}
+
+.edit-button {
+background:url(../images/edit-button-image.png) no-repeat;
+cursor:pointer;
+width: 25px;
+height: 25px;
+border: none;
+}
+
+.meal-table {
+	margin:10px auto;
+	padding:0px;
+	width:100%;
+	border:1px solid #000000;
+}
+
+.meal-table table{
+  border-collapse: collapse;
+  border-spacing: 0;
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:0px;
+}
+
+.meal-table tr { 
+	 background-color:#ffffff; 
+}
+.meal-table td{
+	vertical-align:middle;
+	border:1px solid #000000;
+	border-width:0px 1px 1px 0px;
+	text-align:left;
+	padding:9px;
+	color:#000000;
+}
+.meal-table tr:last-child td{
+	border-width:0px 1px 0px 0px;
+	font-weight: bold;
+	background-color: #E5D5C6;
+	font-size:14px;
+}
+.meal-table tr td:last-child{
+	border-width:0px 0px 1px 0px;
+}
+.meal-table tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+.meal-table tr:first-child td{
+	background:-o-linear-gradient(bottom, #dbc5b1 5%, #84684e 100%);	
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dbc5b1), color-stop(1, #84684e));
+	background:-moz-linear-gradient(center top, #dbc5b1 5%, #84684e 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#dbc5b1", endColorstr="#84684e");	
+	background: -o-linear-gradient(top,#dbc5b1,84684e);
+	background-color:#dbc5b1;
+	border:0px solid #000000;
+	text-align:center;
+	border-width:0px 0px 1px 1px;
+	font-size:14px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#000000;
+}
+.meal-table tr:first-child:hover td{
+	background:-o-linear-gradient(bottom, #dbc5b1 5%, #84684e 100%);	
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dbc5b1), color-stop(1, #84684e) );
+	background:-moz-linear-gradient( center top, #dbc5b1 5%, #84684e 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#dbc5b1", endColorstr="#84684e");	
+	background: -o-linear-gradient(top,#dbc5b1,84684e);
+	background-color:#dbc5b1;
+}
+.meal-table tr:first-child td:first-child{
+	border-width:0px 0px 1px 0px;
+}
+.meal-table tr:first-child td:last-child{
+	border-width:0px 0px 1px 1px;
+}

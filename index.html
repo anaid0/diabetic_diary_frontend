@@ -19,20 +19,22 @@
 
   <script type="x-handlebars-template" id="show-entries-template">
   <div class="entries-list">
-    <h1> Listing entries: </h1>
+    <h1>Twój dzienniczek: </h1>
       {{#each entries}}
       <div class="entry">
           <div class="entry-label">
-            {{ user.name }}
-            <button class="destroy">D</button>
-            <button class="edit">E</button>
+            <span class="center">
+              {{ user.name }}
+            </span>
+            <span class="right">
+              <button class="edit-button"></button>
+              <button class="delete-button"></button>
+            </span>
+            <div class="datetime">
+            {{ date }} {{ time }}
           </div>
-
-          <div class="datetime">
-            <span class="date">{{ date }}</span>
-            <span class="time">{{ time }}</span>
           </div>
-
+          
           {{#if measurement}}
           <div class="entry-item">
             <label>Pomiar: </label>
@@ -55,13 +57,13 @@
           <div class="entry-item">
             <label>Posiłek: </label>
             {{#with meal}}
-              <table>
+              <table class="meal-table">
                 <tr>
-                  <th>Produkt</th>
-                  <th>Ilość (g)</th>
-                  <th>WW</th>
-                  <th>WBT</th>
-                  <th>kcal</th>
+                  <td>Produkt</td>
+                  <td>Ilość (g)</td>
+                  <td>WW</td>
+                  <td>WBT</td>
+                  <td>kcal</td>
                 </tr>
                 {{#meal_items}}
                 <tr>
@@ -72,8 +74,14 @@
                   <td>{{kcal}}</td>
                 </tr>
                 {{/meal_items}}
+                <tr>
+                  <td>Razem</td>
+                  <td></td>
+                  <td>{{ww}}</td>
+                  <td>{{wbt}}</td>
+                  <td>{{kcal}}</td>
+                </tr>
               </table>
-              Razem: {{ww}} WW, {{wbt}} WBT, {{kcal}} kcal
             {{/with}}
           </div>
           {{/if}}
@@ -88,7 +96,6 @@
           {{/if}}
 
         </div>
-      ********************************************
       {{/each}}
     </div>
   </script>
