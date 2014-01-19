@@ -19,7 +19,6 @@
 
   <script type="x-handlebars-template" id="show-entries-template">
   <div class="entries-list">
-    <h1>Twój dzienniczek: </h1>
       {{#each entries}}
       <div class="entry">
           <div class="entry-label">
@@ -27,14 +26,18 @@
               {{ user.name }}
             </span>
             <span class="right">
-              <button class="edit-button"></button>
-              <button class="delete-button"></button>
+              <span class="edit-button">
+                <input type="button" id="edit-button"/>
+              </span>
+              <span class="delete-button">
+                <input type="button" id="delete-button"/>
+              </span>
             </span>
             <div class="datetime">
             {{ date }} {{ time }}
           </div>
           </div>
-          
+
           {{#if measurement}}
           <div class="entry-item">
             <label>Pomiar: </label>
@@ -91,6 +94,15 @@
             <label>Wysiłek: </label>
             {{#with activity}}
               {{ time }} h, {{ type }}, {{ energy }} kcal
+            {{/with}}
+          </div>
+          {{/if}}
+
+          {{#if note}}
+          <div class="entry-item">
+            <label>Notatki: </label><br>
+            {{#with note}}
+              {{ content }}
             {{/with}}
           </div>
           {{/if}}

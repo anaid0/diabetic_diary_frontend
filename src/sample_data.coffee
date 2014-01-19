@@ -7,17 +7,17 @@ class SampleData
                 new Dose(5, "Humalog"), 
                 new Meal([new MealItem("pieczywo", 60, 30, 180, 0.5), new MealItem("dzem", 30, 20, 120, 0.5)], 50, 300, 1),
                 null,
-                "Jakies cos" ))
+                null ))
     @entries.push(new Entry(@user1, "2014-01-09", "11:27", new Measurement(240, "po posilku"), 
                 new Dose(4, "Humalog"),
                 null, 
                 null, 
-                "Korekta"))
+                new Note("Korekta")))
     @entries.push(new Entry(@user1, "2014-01-15", "22:56", new Measurement(45, "inny"), 
                 null,
                 new Meal([new MealItem("sok", 200, 20, 80, 0)], 20, 80, 0),
                 null, 
-                "Hipo"))
+                new Note("Hipoglikemia")))
   getEntries: =>
     
     

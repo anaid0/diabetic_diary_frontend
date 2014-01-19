@@ -14,7 +14,9 @@ class Gui
     element = $(html)
   
   showEntries: (entries) =>
-    element = @createElementFor("#show-entries-template", entries : entries)
-    $(".main").append(element)
+    buttonElement = @createElementFor("#add-new-entry-button-template")
+    $(".main").append(buttonElement)
+    entriesElement = @createElementFor("#show-entries-template", entries : entries)
+    $(".main").append(entriesElement)
   #addNewEntry: (entry) =>
     

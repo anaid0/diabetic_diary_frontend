@@ -83,22 +83,35 @@ body {
 	font-weight: bold;
 }
 
-.delete-button {
-background:url(../images/delete-button-image.png) no-repeat;
-cursor:pointer;
-width: 25px;
-height: 25px;
-border: none;
+.delete-button input {
+	background:url(../images/delete-button-image.png) no-repeat;
+	cursor:pointer;
+	width: 25px;
+	height: 25px;
+	border: none;
 }
 
-.edit-button {
-background:url(../images/edit-button-image.png) no-repeat;
-cursor:pointer;
-width: 25px;
-height: 25px;
-border: none;
+.edit-button input {
+	background:url(../images/edit-button-image.png) no-repeat;
+	cursor:pointer;
+	width: 25px;
+	height: 25px;
+	border: none;
 }
 
+.add-new-entry-button {
+	margin: auto;
+}
+.add-new-entry-button input {
+	margin: 15px auto;
+	background-color: rgb(167, 158, 152);
+	font-size: 70px;
+	cursor: pointer;
+	width: 100%;
+	height: 100px;
+	border: 2px solid;
+	border-radius: 20px;
+}
 .meal-table {
 	margin:10px auto;
 	padding:0px;
