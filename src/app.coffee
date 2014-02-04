@@ -7,6 +7,7 @@
 
 class App
   constructor: ->
+    HandlebarsFormHelpers.register(Handlebars)
     useCase = new UseCase()
     window.useCase = useCase
     gui = new Gui()

@@ -4,6 +4,14 @@ var Gui,
 Gui = (function() {
 
   function Gui() {
+    this.showEntryForm = __bind(this.showEntryForm, this);
+
+    this.editEntryClicked = __bind(this.editEntryClicked, this);
+
+    this.addNewEntryClicked = __bind(this.addNewEntryClicked, this);
+
+    this.setEditEntryButton = __bind(this.setEditEntryButton, this);
+
     this.showEntries = __bind(this.showEntries, this);
 
     this.createElementFor = __bind(this.createElementFor, this);
@@ -19,13 +27,56 @@ Gui = (function() {
   };
 
   Gui.prototype.showEntries = function(entries) {
-    var buttonElement, entriesElement;
+    var addNewEntryButton, buttonElement, entriesElement,
+      _this = this;
     buttonElement = this.createElementFor("#add-new-entry-button-template");
     $(".main").append(buttonElement);
     entriesElement = this.createElementFor("#show-entries-template", {
       entries: entries
     });
-    return $(".main").append(entriesElement);
+    $(".main").append(entriesElement);
+    addNewEntryButton = $("#add-new-entry-button");
+    addNewEntryButton.click(function() {
+      return _this.addNewEntryClicked();
+    });
+    $(".edit-button").each(function() {
+      return _this.setEditEntryButton($(_this));
+    });
+  };
+
+  Gui.prototype.setEditEntryButton = function(button) {
+    var _this = this;
+    console.log(button.attr("entry-id"));
+    button.click(function() {
+      return _this.editEntryClicked(button.attr('entry-id'));
+    });
+  };
+
+  Gui.prototype.addNewEntryClicked = function() {
+    return this.showEntryForm(null);
+  };
+
+  Gui.prototype.editEntryClicked = function(entryId) {
+    return console.log("edit entry clicked");
+  };
+
+  Gui.prototype.showEntryForm = function(entry) {
+    var form;
+    form = this.createElementFor("#entry-form-template", entry);
+    $(".main").append(form);
+    return $("#entry-form").dialog({
+      autoOpen: true,
+      modal: true,
+      draggable: false,
+      resizable: false,
+      position: ['center', 300],
+      width: 700,
+      buttons: {
+        Ok: function() {
+          return $("#entry-form").remove();
+        }
+      }
+    });
   };
 
   return Gui;

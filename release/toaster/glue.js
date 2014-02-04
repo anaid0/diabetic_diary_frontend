@@ -16,6 +16,18 @@ Glue = (function() {
     After(this.useCase, "setInitialEntries", function(entries) {
       return _this.gui.showEntries(entries);
     });
+    After(this.gui, "editEntryClicked", function(entryId) {
+      return _this.useCase.getEntryToEdit(entryId);
+    });
+    After(this.useCase, "getEntryToEdit", function(entryId) {
+      return _this.sampleData.getEntry(entryId);
+    });
+    After(this.sampleData, "entryFound", function(entry) {
+      return _this.useCase.entryFound(entry);
+    });
+    After(this.useCase, "entryFound", function(entry) {
+      return _this.gui.showEntryForm(entry);
+    });
     LogAll(this.useCase);
     LogAll(this.gui);
     LogAll(this.sampleData);

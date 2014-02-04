@@ -4,6 +4,10 @@ var Activity, Dose, Entry, Meal, MealItem, Measurement, Note, UseCase, User,
 UseCase = (function() {
 
   function UseCase() {
+    this.entryFound = __bind(this.entryFound, this);
+
+    this.getEntryToEdit = __bind(this.getEntryToEdit, this);
+
     this.setInitialEntries = __bind(this.setInitialEntries, this);
 
     this.getEntries = __bind(this.getEntries, this);
@@ -22,13 +26,18 @@ UseCase = (function() {
     return this.entries = entries;
   };
 
+  UseCase.prototype.getEntryToEdit = function(entryId) {};
+
+  UseCase.prototype.entryFound = function(entry) {};
+
   return UseCase;
 
 })();
 
 Entry = (function() {
 
-  function Entry(user, date, time, measurement, dose, meal, activity, note) {
+  function Entry(id, user, date, time, measurement, dose, meal, activity, note) {
+    this.id = id;
     this.user = user;
     this.date = date;
     this.time = time;

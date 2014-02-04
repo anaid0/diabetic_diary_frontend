@@ -10,16 +10,23 @@ class UseCase
   setInitialEntries: (entries) =>
     @entries = entries
 
+
+
+
   #addNewEntry: (entry) =>
     #@entries.push(entry)
 
   #deleteEntry: =>
     #@entries.remove(entry)
 
-  #editEntry: =>
+  getEntryToEdit: (entryId) =>
+
+  entryFound: (entry) =>
+
+  #showEntry: (entry) =>
 
 class Entry
-  constructor: (@user, @date, @time, @measurement, @dose, @meal, @activity, @note) ->
+  constructor: (@id, @user, @date, @time, @measurement, @dose, @meal, @activity, @note) ->
 
 class User
   constructor: (@id, @name) ->
