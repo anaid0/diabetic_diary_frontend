@@ -17,7 +17,11 @@ UseCase = (function() {
   }
 
   UseCase.prototype.start = function() {
-    return this.getEntries();
+    this.getEntries();
+    return HandlebarsFormHelpers.register(Handlebars, {
+      namespace: 'custom',
+      validationErrorClass: 'custom-validation-class'
+    });
   };
 
   UseCase.prototype.getEntries = function() {};

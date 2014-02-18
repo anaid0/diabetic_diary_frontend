@@ -4,6 +4,10 @@ class UseCase
     
   start: =>
     @getEntries()
+    HandlebarsFormHelpers.register(Handlebars, {
+      namespace: 'custom',
+      validationErrorClass: 'custom-validation-class'
+    });
 
   getEntries: =>
 

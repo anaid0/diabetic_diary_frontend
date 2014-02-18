@@ -39,8 +39,8 @@ Gui = (function() {
     addNewEntryButton.click(function() {
       return _this.addNewEntryClicked();
     });
-    $(".edit-button").each(function() {
-      return _this.setEditEntryButton($(_this));
+    $(".edit-button").each(function(index, element) {
+      return _this.setEditEntryButton($(element));
     });
   };
 
@@ -62,9 +62,12 @@ Gui = (function() {
 
   Gui.prototype.showEntryForm = function(entry) {
     var form;
+    $("#accordion").accordion({
+      collapsible: true
+    });
     form = this.createElementFor("#entry-form-template", entry);
     $(".main").append(form);
-    return $("#entry-form").dialog({
+    $("#entry-form").dialog({
       autoOpen: true,
       modal: true,
       draggable: false,
@@ -77,6 +80,7 @@ Gui = (function() {
         }
       }
     });
+    return $("#accordion").accordion();
   };
 
   return Gui;

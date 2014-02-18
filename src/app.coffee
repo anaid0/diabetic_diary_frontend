@@ -8,6 +8,7 @@
 class App
   constructor: ->
     HandlebarsFormHelpers.register(Handlebars)
+    Handlebars.registerHelper('maybeNull', (item) => if item == null then "" else item)
     useCase = new UseCase()
     window.useCase = useCase
     gui = new Gui()

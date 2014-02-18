@@ -9,8 +9,8 @@
 </head>
 <body>
 
-	<div class="main">
-	</div>
+  <div class="main">
+  </div>
 
   <script type="x-handlebars-template" id="add-new-entry-button-template">
     <div class="add-new-entry-button">
@@ -28,10 +28,10 @@
             </span>
             <span class="right">
               <span class="edit-button" entry-id="{{ id }}">
-                <input type="button" class="edit-button"/>
+                <input type="button" class="edit-button-input"/>
               </span>
               <span class="delete-button">
-                <input type="button" class="delete-button"/>
+                <input type="button" class="delete-button-input"/>
               </span>
             </span>
             <div class="datetime">
@@ -115,19 +115,118 @@
 
   <script type="x-handlebars-template" id="entry-form-template">
     <div id="entry-form" title="Dodaj nowy wpis">
-    <p class="validateTips">Jakieś coś.</p>
-      <form>
-        <fieldset>
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name">
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email" value="">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" value="">
-        </fieldset>
-      </form>
+    <p class="validateTips">Aby dodać któryś element wpisu, kliknij w jego nazwę poniżej. Do jednego wpisu możesz dodać dowolnie wybrane z poniższych elementów.</p>
+    <div id="accordion">
+    <h3>Pomiar</h3>
+        <div id="add-measurement">
+          {{#form url class="measurement-form"}}
+            {{#if measurement}}
+              {{#with measurement}}
+              <div class="form-group">
+                {{label "measurement-value" "Wartość"}}
+                {{input "measurement-value" value}}
+              </div>
+              <div class="form-group">
+                {{label "measurement-type" "Rodzaj pomiaru"}}
+                {{input "measurement-type" type}}
+              </div>
+              {{/with}}
+            {{else}}
+              <div class="form-group">
+                {{label "measurement-value" "Wartość"}}
+                {{input "measurement-value" ""}}
+              </div>
+              <div class="form-group">
+                {{label "measurement-type" "Rodzaj pomiaru"}}
+                {{input "measurement-type" ""}}
+              </div>
+            {{/if}}
+          {{/form}}
+
+        </div>
+
+        <h3>Insulina</h3>
+        <div id="add-dose">
+          {{#form url class="dose-form"}}
+            {{#if dose}}
+              {{#with dose}}
+              <div class="form-group">
+                {{label "dose-value" "Ilość jednostek"}}
+                {{input "dose-value" value}}
+              </div>
+              <div class="form-group">
+                {{label "dose-type" "Rodzaj insuliny"}}
+                {{input "dose-type" insulin_type}}
+              </div>
+              {{/with}}
+            {{else}}
+              {{#with dose}}
+                <div class="form-group">
+                  {{label "dose-value" "Ilość jednostek"}}
+                  {{input "dose-value" ""}}
+                </div>
+                <div class="form-group">
+                  {{label "dose-type" "Rodzaj insuliny"}}
+                  {{input "dose-type" ""}}
+                </div>
+              {{/with}}
+            {{/if}}
+          {{/form}}
+        </div>
+
+        <h3>Posiłek</h3>
+        <div id="add-meal">
+          {{#form url class="meal-form"}}
+            {{#if meal}}
+              {{#with meal}}
+                ...
+              {{/with}}
+            {{else}}
+              ...
+            {{/if}}
+          {{/form}}
+        </div>
+
+        <h3>Wysiłek fizyczny</h3>
+        <div id="add-activity">
+          {{#form url class="activity-form"}}
+            {{#if activity}}
+              {{#with activity}}
+              <div class="form-group">
+                {{label "activity-type" "Rodzaj aktywności"}}
+                {{input "activity-type" type}}
+              </div>
+              <div class="form-group">
+                {{label "activity-time" "Czas"}}
+                {{input "activity-time" time}}
+              </div>            
+             {{/with}}
+            {{else}}
+              {{#with activity}}
+              <div class="form-group">
+                {{label "activity-type" "Rodzaj aktywności"}}
+                {{input "activity-type" ""}}
+              </div>
+              <div class="form-group">
+                {{label "activity-time" "Czas"}}
+                {{input "activity-time" ""}}
+              </div>            
+              {{/with}}
+            {{/if}}
+            
+          {{/form}}
+        </div>
+
+        <h3>Notatki</h3>
+        <div id="add-note">
+          {{textarea "note" {{maybeNull note.content }} }}
+        </div>
+
+      </div>
+        
     </div>
   </script>
+
 
   <script type="x-handlebars-template" id="remove-entry-template">
     <div class="remove-entry">
@@ -137,7 +236,7 @@
   <script src="vendors/base.js"></script>
   <script src="vendors/jquery-1.7.2.min.js" type="text/javascript"></script>
   <script src="vendors/jquery.json-2.3.min.js" type="text/javascript"></script>
-   <script src="vendors/jquery.ui-1.10.4.min.js" type="text/javascript"></script>
+  <script src="vendors/jquery.ui-1.10.4.min.js" type="text/javascript"></script>
   <script src="vendors/uuid.js" type="text/javascript"></script>
   <script src="vendors/jstorage.min.js" type="text/javascript"></script>
   <script src="vendors/underscore.js" type="text/javascript"></script>

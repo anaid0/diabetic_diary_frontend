@@ -19,7 +19,8 @@ class Gui
     $(".main").append(entriesElement)
     addNewEntryButton = $("#add-new-entry-button")
     addNewEntryButton.click( => @addNewEntryClicked())
-    $(".edit-button").each( => @setEditEntryButton($(this)))
+    $(".edit-button").each (index, element) => 
+      @setEditEntryButton($(element))
     #$(".edit-button").each( => console.log($(this).attr[1]))
     return
 
@@ -37,6 +38,7 @@ class Gui
   showEntryForm: (entry) =>
     #$(".add-new-entry-button").remove()
     #$(".entries-list").remove()
+    $("#accordion").accordion(collapsible: true)
     form = @createElementFor("#entry-form-template", entry)
     $(".main").append(form)
     $("#entry-form").dialog({
@@ -49,5 +51,6 @@ class Gui
 　　　　　　buttons: {
 　　　　　　　　Ok: -> $("#entry-form").remove()
 　　　　　　　　}
-　　　　});
+　　　　})
+    $("#accordion").accordion()
     
