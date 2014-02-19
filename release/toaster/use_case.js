@@ -17,11 +17,7 @@ UseCase = (function() {
   }
 
   UseCase.prototype.start = function() {
-    this.getEntries();
-    return HandlebarsFormHelpers.register(Handlebars, {
-      namespace: 'custom',
-      validationErrorClass: 'custom-validation-class'
-    });
+    return this.getEntries();
   };
 
   UseCase.prototype.getEntries = function() {};
@@ -41,6 +37,7 @@ UseCase = (function() {
 Entry = (function() {
 
   function Entry(id, user, date, time, measurement, dose, meal, activity, note) {
+    var now;
     this.id = id;
     this.user = user;
     this.date = date;
@@ -50,6 +47,11 @@ Entry = (function() {
     this.meal = meal;
     this.activity = activity;
     this.note = note;
+    if (arguments.length === 0) {
+      now = new Date;
+      this.date = "" + (now.getFullYear()) + "-" + (now.getMonth() + 1) + "-" + (now.getDate());
+      this.time = "" + (now.getHours()) + ":" + (now.getMinutes());
+    }
   }
 
   return Entry;

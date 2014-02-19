@@ -30,7 +30,7 @@ class Gui
     return
 
   addNewEntryClicked: =>
-    @showEntryForm(null)
+    @showEntryForm(new Entry())
 
   editEntryClicked: (entryId) =>
     console.log("edit entry clicked")
@@ -38,7 +38,6 @@ class Gui
   showEntryForm: (entry) =>
     #$(".add-new-entry-button").remove()
     #$(".entries-list").remove()
-    $("#accordion").accordion(collapsible: true)
     form = @createElementFor("#entry-form-template", entry)
     $(".main").append(form)
     $("#entry-form").dialog({
@@ -52,5 +51,10 @@ class Gui
 　　　　　　　　Ok: -> $("#entry-form").remove()
 　　　　　　　　}
 　　　　})
-    $("#accordion").accordion()
+    $("#accordion").accordion(collapsible: true)
+    $("#measurement-value-spinner").spinner({ min: 0, max: 2000 })
+    $("#dose-value-spinner").spinner({ step: 0.1, numberFormat: "n", culture: "pl-PL", min: 0.1, max: 100 })
+    $("#activity-time-spinner").spinner({ min: 1, max: 1440 })
+    $("#datepicker").datepicker();
+    return
     

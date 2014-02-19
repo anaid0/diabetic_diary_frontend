@@ -53,7 +53,7 @@ Gui = (function() {
   };
 
   Gui.prototype.addNewEntryClicked = function() {
-    return this.showEntryForm(null);
+    return this.showEntryForm(new Entry());
   };
 
   Gui.prototype.editEntryClicked = function(entryId) {
@@ -62,9 +62,6 @@ Gui = (function() {
 
   Gui.prototype.showEntryForm = function(entry) {
     var form;
-    $("#accordion").accordion({
-      collapsible: true
-    });
     form = this.createElementFor("#entry-form-template", entry);
     $(".main").append(form);
     $("#entry-form").dialog({
@@ -80,7 +77,25 @@ Gui = (function() {
         }
       }
     });
-    return $("#accordion").accordion();
+    $("#accordion").accordion({
+      collapsible: true
+    });
+    $("#measurement-value-spinner").spinner({
+      min: 0,
+      max: 2000
+    });
+    $("#dose-value-spinner").spinner({
+      step: 0.1,
+      numberFormat: "n",
+      culture: "pl-PL",
+      min: 0.1,
+      max: 100
+    });
+    $("#activity-time-spinner").spinner({
+      min: 1,
+      max: 1440
+    });
+    $("#datepicker").datepicker();
   };
 
   return Gui;

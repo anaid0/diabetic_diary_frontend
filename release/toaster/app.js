@@ -5,8 +5,7 @@ App = (function() {
   function App() {
     var glue, gui, sampleData, useCase,
       _this = this;
-    HandlebarsFormHelpers.register(Handlebars);
-    Handlebars.registerHelper('maybeNull', function(item) {
+    Handlebars.registerHelper('nullToString', function(item) {
       if (item === null) {
         return "";
       } else {

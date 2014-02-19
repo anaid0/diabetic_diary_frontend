@@ -4,10 +4,7 @@ class UseCase
     
   start: =>
     @getEntries()
-    HandlebarsFormHelpers.register(Handlebars, {
-      namespace: 'custom',
-      validationErrorClass: 'custom-validation-class'
-    });
+
 
   getEntries: =>
 
@@ -31,7 +28,10 @@ class UseCase
 
 class Entry
   constructor: (@id, @user, @date, @time, @measurement, @dose, @meal, @activity, @note) ->
-
+    if arguments.length == 0
+      now = new Date
+      @date = "#{now.getFullYear()}-#{now.getMonth()+1}-#{now.getDate()}"
+      @time = "#{now.getHours()}:#{now.getMinutes()}"
 class User
   constructor: (@id, @name) ->
 
