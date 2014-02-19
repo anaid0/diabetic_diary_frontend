@@ -74,6 +74,10 @@ Gui = (function() {
         }
       }
     });
+    return this.renderFormElements();
+  };
+
+  Gui.prototype.renderFormElements = function() {
     $("#accordion").accordion({
       collapsible: true
     });
@@ -101,6 +105,9 @@ Gui = (function() {
       max: 50
     });
     $("#datepicker").datepicker();
+    $("#help-balloon").balloon({
+      contents: '<p id="help-balloon-text">Aby dodać któryś element wpisu, kliknij w jego nazwę poniżej. <br> Do jednego wpisu możesz dodać dowolnie wybrane z poniższych elementów<br>(jedynym wymaganym elementem jest data i czas).</p>'
+    });
   };
 
   return Gui;

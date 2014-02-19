@@ -4,6 +4,10 @@ var SampleData,
 SampleData = (function() {
 
   function SampleData() {
+    this.removeEntry = __bind(this.removeEntry, this);
+
+    this.addEntry = __bind(this.addEntry, this);
+
     this.entryFound = __bind(this.entryFound, this);
 
     this.getEntry = __bind(this.getEntry, this);
@@ -39,6 +43,14 @@ SampleData = (function() {
   };
 
   SampleData.prototype.entryFound = function(entry) {};
+
+  SampleData.prototype.addEntry = function(entry) {
+    return this.entries.push(entry);
+  };
+
+  SampleData.prototype.removeEntry = function(id) {
+    return this.entries.remove(id);
+  };
 
   return SampleData;
 

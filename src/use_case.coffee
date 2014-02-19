@@ -1,18 +1,12 @@
 class UseCase
   constructor: ->
-    @entries = []
     
   start: =>
     @getEntries()
 
-
   getEntries: =>
 
   setInitialEntries: (entries) =>
-    @entries = entries
-
-
-
 
   #addNewEntry: (entry) =>
     #@entries.push(entry)
@@ -25,6 +19,10 @@ class UseCase
   entryFound: (entry) =>
 
   #showEntry: (entry) =>
+
+#################################################################################
+#################################################################################
+#################################################################################
 
 class Entry
   constructor: (@id, @user, @date, @time, @measurement, @dose, @meal, @activity, @note) ->
@@ -40,7 +38,7 @@ class Measurement
 
 class Dose
   constructor: (@value, @insulin_type) ->
-    
+
 class Meal
   constructor: (@carbs, @kcal) ->
     @ww = @carbs / 10

@@ -5,6 +5,7 @@
 
 class Gui
   constructor: ->
+    #@renderFormElements()
 
   createElementFor: (templateId, data) =>
     source = $(templateId).html()
@@ -46,14 +47,17 @@ class Gui
 　　　　　　　　Ok: -> $("#entry-form").remove()
 　　　　　　　　}
 　　　　})
+    @renderFormElements()
+    
 
-    $("#accordion").accordion(collapsible: true)
+  renderFormElements: ->
+    $("#accordion").accordion({collapsible: true})
     $("#measurement-value-spinner").spinner({ min: 0, max: 2000 })
     #$("#dose-value-spinner").spinner({ step: 0.1, numberFormat: "n", culture: "pl-PL", min: 0.1, max: 100 })
     $("#dose-value-spinner").spinner({ step: 0.1, min: 0.1, max: 100 })
     $("#activity-time-spinner").spinner({ min: 1, max: 1440 })
     $("#ww-spinner").spinner({ step: 0.1, min: 0, max: 50 })
     $("#wbt-spinner").spinner({ step: 0.1, min: 0, max: 50 })
-    $("#datepicker").datepicker();
+    $("#datepicker").datepicker()
+    $("#help-balloon").balloon({ contents: '<p id="help-balloon-text">Aby dodać któryś element wpisu, kliknij w jego nazwę poniżej. <br> Do jednego wpisu możesz dodać dowolnie wybrane z poniższych elementów<br>(jedynym wymaganym elementem jest data i czas).</p>' })
     return
-    

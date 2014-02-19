@@ -36,3 +36,8 @@ class SampleData
     @entryFound(@entries[entryId])
   
   entryFound: (entry) =>
+
+  addEntry: (entry) =>
+    @entries.push(entry)
+  removeEntry: (id) =>
+    @entries.remove(id)

@@ -13,7 +13,7 @@ UseCase = (function() {
     this.getEntries = __bind(this.getEntries, this);
 
     this.start = __bind(this.start, this);
-    this.entries = [];
+
   }
 
   UseCase.prototype.start = function() {
@@ -22,9 +22,7 @@ UseCase = (function() {
 
   UseCase.prototype.getEntries = function() {};
 
-  UseCase.prototype.setInitialEntries = function(entries) {
-    return this.entries = entries;
-  };
+  UseCase.prototype.setInitialEntries = function(entries) {};
 
   UseCase.prototype.getEntryToEdit = function(entryId) {};
 
