@@ -40,16 +40,20 @@ class Measurement
 
 class Dose
   constructor: (@value, @insulin_type) ->
-
+    
 class Meal
-  @ww
-  constructor: (@meal_items, @carbs, @kcal, @wbt) ->
-    @ww = @carbs/10
+  constructor: (@carbs, @kcal) ->
+    @ww = @carbs / 10
+    @wbt = (@kcal - @carbs * 4) / 100
+# class Meal
+#   @ww
+#   constructor: (@meal_items, @carbs, @kcal, @wbt) ->
+#     @ww = @carbs/10
 
-class MealItem
-  @ww
-  constructor: (@name, @weight, @carbs, @kcal, @wbt) ->
-    @ww = @carbs/10
+# class MealItem
+#   @ww
+#   constructor: (@name, @weight, @carbs, @kcal, @wbt) ->
+#     @ww = @carbs/10
 
 class Activity
   constructor: (@time, @type) ->

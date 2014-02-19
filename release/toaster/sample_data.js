@@ -15,9 +15,9 @@ SampleData = (function() {
     this.getEntries = __bind(this.getEntries, this);
     this.entries = [];
     this.user1 = new User(1, "Jan Kowalski");
-    this.entries.push(new Entry(0, this.user1, "2014-01-01", "17:30", new Measurement(130, "przed posilkiem"), new Dose(5, "Humalog"), new Meal([new MealItem("pieczywo", 60, 30, 180, 0.5), new MealItem("dzem", 30, 20, 120, 0.5)], 50, 300, 1), null, null));
+    this.entries.push(new Entry(0, this.user1, "2014-01-01", "17:30", new Measurement(130, "przed posilkiem"), new Dose(5, "Humalog"), new Meal(50, 300), null, null));
     this.entries.push(new Entry(1, this.user1, "2014-01-09", "11:27", new Measurement(240, "po posilku"), new Dose(4, "Humalog"), null, null, new Note("Korekta")));
-    this.entries.push(new Entry(2, this.user1, "2014-01-15", "22:56", new Measurement(45, "inny"), null, new Meal([new MealItem("sok", 200, 20, 80, 0)], 20, 80, 0), null, new Note("Hipoglikemia")));
+    this.entries.push(new Entry(2, this.user1, "2014-01-15", "22:56", new Measurement(45, "inny"), null, new Meal(20, 80), null, new Note("Hipoglikemia")));
   }
 
   SampleData.prototype.getEntries = function() {

@@ -46,7 +46,6 @@ Gui = (function() {
 
   Gui.prototype.setEditEntryButton = function(button) {
     var _this = this;
-    console.log(button.attr("entry-id"));
     button.click(function() {
       return _this.editEntryClicked(button.attr('entry-id'));
     });
@@ -56,9 +55,7 @@ Gui = (function() {
     return this.showEntryForm(new Entry());
   };
 
-  Gui.prototype.editEntryClicked = function(entryId) {
-    return console.log("edit entry clicked");
-  };
+  Gui.prototype.editEntryClicked = function(entryId) {};
 
   Gui.prototype.showEntryForm = function(entry) {
     var form;
@@ -86,14 +83,22 @@ Gui = (function() {
     });
     $("#dose-value-spinner").spinner({
       step: 0.1,
-      numberFormat: "n",
-      culture: "pl-PL",
       min: 0.1,
       max: 100
     });
     $("#activity-time-spinner").spinner({
       min: 1,
       max: 1440
+    });
+    $("#ww-spinner").spinner({
+      step: 0.1,
+      min: 0,
+      max: 50
+    });
+    $("#wbt-spinner").spinner({
+      step: 0.1,
+      min: 0,
+      max: 50
     });
     $("#datepicker").datepicker();
   };

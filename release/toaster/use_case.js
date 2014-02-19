@@ -1,4 +1,4 @@
-var Activity, Dose, Entry, Meal, MealItem, Measurement, Note, UseCase, User,
+var Activity, Dose, Entry, Meal, Measurement, Note, UseCase, User,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 UseCase = (function() {
@@ -93,34 +93,14 @@ Dose = (function() {
 
 Meal = (function() {
 
-  Meal.ww;
-
-  function Meal(meal_items, carbs, kcal, wbt) {
-    this.meal_items = meal_items;
+  function Meal(carbs, kcal) {
     this.carbs = carbs;
     this.kcal = kcal;
-    this.wbt = wbt;
     this.ww = this.carbs / 10;
+    this.wbt = (this.kcal - this.carbs * 4) / 100;
   }
 
   return Meal;
-
-})();
-
-MealItem = (function() {
-
-  MealItem.ww;
-
-  function MealItem(name, weight, carbs, kcal, wbt) {
-    this.name = name;
-    this.weight = weight;
-    this.carbs = carbs;
-    this.kcal = kcal;
-    this.wbt = wbt;
-    this.ww = this.carbs / 10;
-  }
-
-  return MealItem;
 
 })();
 

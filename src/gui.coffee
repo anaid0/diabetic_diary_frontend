@@ -21,11 +21,9 @@ class Gui
     addNewEntryButton.click( => @addNewEntryClicked())
     $(".edit-button").each (index, element) => 
       @setEditEntryButton($(element))
-    #$(".edit-button").each( => console.log($(this).attr[1]))
     return
 
   setEditEntryButton: (button) =>
-    console.log(button.attr("entry-id"))
     button.click( => @editEntryClicked(button.attr('entry-id')))
     return
 
@@ -33,11 +31,8 @@ class Gui
     @showEntryForm(new Entry())
 
   editEntryClicked: (entryId) =>
-    console.log("edit entry clicked")
 
   showEntryForm: (entry) =>
-    #$(".add-new-entry-button").remove()
-    #$(".entries-list").remove()
     form = @createElementFor("#entry-form-template", entry)
     $(".main").append(form)
     $("#entry-form").dialog({
@@ -51,10 +46,14 @@ class Gui
 　　　　　　　　Ok: -> $("#entry-form").remove()
 　　　　　　　　}
 　　　　})
+
     $("#accordion").accordion(collapsible: true)
     $("#measurement-value-spinner").spinner({ min: 0, max: 2000 })
-    $("#dose-value-spinner").spinner({ step: 0.1, numberFormat: "n", culture: "pl-PL", min: 0.1, max: 100 })
+    #$("#dose-value-spinner").spinner({ step: 0.1, numberFormat: "n", culture: "pl-PL", min: 0.1, max: 100 })
+    $("#dose-value-spinner").spinner({ step: 0.1, min: 0.1, max: 100 })
     $("#activity-time-spinner").spinner({ min: 1, max: 1440 })
+    $("#ww-spinner").spinner({ step: 0.1, min: 0, max: 50 })
+    $("#wbt-spinner").spinner({ step: 0.1, min: 0, max: 50 })
     $("#datepicker").datepicker();
     return
     
