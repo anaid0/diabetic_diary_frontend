@@ -54,8 +54,8 @@ Gui = (function() {
 
   Gui.prototype.editEntryClicked = function(entryId) {};
 
-  Gui.prototype.showEntryForm = function(entry, insulinTypes, measurementTypes) {
-    var form, insulinSelect, measurementSelect;
+  Gui.prototype.showEntryForm = function(entry, insulinTypes, measurementTypes, activityTypes) {
+    var activitySelect, form, insulinSelect, measurementSelect;
     form = this.createElementFor("#entry-form-template", entry);
     $(".main").append(form);
     insulinSelect = this.createElementFor("#insulin-select-template", {
@@ -66,6 +66,10 @@ Gui = (function() {
       measurementTypes: measurementTypes
     });
     $("#measurement-select").append(measurementSelect);
+    activitySelect = this.createElementFor("#activity-select-template", {
+      activityTypes: activityTypes
+    });
+    $("#activity-select").append(activitySelect);
     return this.renderFormElements();
   };
 

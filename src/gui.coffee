@@ -29,13 +29,16 @@ class Gui
 
   editEntryClicked: (entryId) =>
 
-  showEntryForm: (entry, insulinTypes, measurementTypes) =>
+  showEntryForm: (entry, insulinTypes, measurementTypes, activityTypes) =>
     form = @createElementFor("#entry-form-template", entry)
     $(".main").append(form)
     insulinSelect = @createElementFor("#insulin-select-template", insulinTypes : insulinTypes)
     $("#insulin-select").append(insulinSelect)
     measurementSelect = @createElementFor("#measurement-select-template", measurementTypes : measurementTypes)
     $("#measurement-select").append(measurementSelect)
+    activitySelect = @createElementFor("#activity-select-template", activityTypes : activityTypes)
+    $("#activity-select").append(activitySelect)
+
     @renderFormElements()    
 
   renderFormElements: ->

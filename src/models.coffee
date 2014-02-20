@@ -28,10 +28,18 @@ class Meal
 #     @ww = @carbs/10
 
 class Activity
-  constructor: (@time, @type) ->
+  constructor: (@minutes, @type) ->
+    @kcal = @type.kcal_per_hour * @minutes / 60 
 
 class Note
   constructor: (@content) ->
 
-#class InsulinTypesList
-  #constructor: (@userId, @list) ->
+class InsulinType
+  constructor: (@name, @acting, @type) ->
+    @description = "#{@name} (#{@type}, #{@acting})"
+
+class MeasurementType
+  constructor: (@name) ->
+
+class ActivityType
+  constructor: (@name, @kcal_per_hour) ->

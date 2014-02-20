@@ -32,7 +32,7 @@ UseCase = (function() {
 
   UseCase.prototype.getEntryToEdit = function(entryId) {};
 
-  UseCase.prototype.entryFound = function(entry, iList, mList) {};
+  UseCase.prototype.entryFound = function(entry, iList, mList, aList) {};
 
   UseCase.prototype.getInsulinTypes = function(userId) {
     return console.log("jestem w usecase.getInsulinTypes");

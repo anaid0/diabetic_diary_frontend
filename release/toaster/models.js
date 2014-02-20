@@ -1,4 +1,4 @@
-var Activity, Dose, Entry, Meal, Measurement, Note, User;
+var Activity, ActivityType, Dose, Entry, InsulinType, Meal, Measurement, MeasurementType, Note, User;
 
 Entry = (function() {
 
@@ -72,9 +72,10 @@ Meal = (function() {
 
 Activity = (function() {
 
-  function Activity(time, type) {
-    this.time = time;
+  function Activity(minutes, type) {
+    this.minutes = minutes;
     this.type = type;
+    this.kcal = this.type.kcal_per_hour * this.minutes / 60;
   }
 
   return Activity;
@@ -88,5 +89,39 @@ Note = (function() {
   }
 
   return Note;
+
+})();
+
+InsulinType = (function() {
+
+  function InsulinType(name, acting, type) {
+    this.name = name;
+    this.acting = acting;
+    this.type = type;
+    this.description = "" + this.name + " (" + this.type + ", " + this.acting + ")";
+  }
+
+  return InsulinType;
+
+})();
+
+MeasurementType = (function() {
+
+  function MeasurementType(name) {
+    this.name = name;
+  }
+
+  return MeasurementType;
+
+})();
+
+ActivityType = (function() {
+
+  function ActivityType(name, kcal_per_hour) {
+    this.name = name;
+    this.kcal_per_hour = kcal_per_hour;
+  }
+
+  return ActivityType;
 
 })();

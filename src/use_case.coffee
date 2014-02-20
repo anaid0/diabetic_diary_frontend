@@ -17,7 +17,7 @@ class UseCase
 
   getEntryToEdit: (entryId) =>
 
-  entryFound: (entry, iList, mList) =>
+  entryFound: (entry, iList, mList, aList) =>
 
   getInsulinTypes: (userId) =>
     console.log("jestem w usecase.getInsulinTypes")

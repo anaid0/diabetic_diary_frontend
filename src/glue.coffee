@@ -6,8 +6,8 @@ class Glue
 
     After(@gui, "editEntryClicked", (entryId) => @useCase.getEntryToEdit(entryId))
     After(@useCase, "getEntryToEdit", (entryId) => @sampleData.getEntry(entryId))
-    After(@sampleData, "entryFound", (entry, insList, measList) => @useCase.entryFound(entry, insList, measList))
-    After(@useCase, "entryFound", (entry, insList, measList) => @gui.showEntryForm(entry, insList, measList))
+    After(@sampleData, "entryFound", (entry, iList, mList, aList) => @useCase.entryFound(entry, iList, mList, aList))
+    After(@useCase, "entryFound", (entry, iList, mList, aList) => @gui.showEntryForm(entry, iList, mList, aList))
 
     After(@gui, "addNewEntryClicked", => @useCase.newEntry())
     After(@useCase, "newEntry", => @sampleData.newEntry())
