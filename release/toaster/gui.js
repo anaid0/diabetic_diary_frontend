@@ -8,14 +8,13 @@ Gui = (function() {
 
     this.editEntryClicked = __bind(this.editEntryClicked, this);
 
-    this.addNewEntryClicked = __bind(this.addNewEntryClicked, this);
-
     this.setEditEntryButton = __bind(this.setEditEntryButton, this);
 
     this.showEntries = __bind(this.showEntries, this);
 
     this.createElementFor = __bind(this.createElementFor, this);
-
+    this.insulinTypes = [];
+    this.measurementTypes = [];
   }
 
   Gui.prototype.createElementFor = function(templateId, data) {
@@ -52,20 +51,33 @@ Gui = (function() {
   };
 
   Gui.prototype.addNewEntryClicked = function() {
-    return this.showEntryForm(new Entry());
+    return this.showEntryForm(new Entry(), [], []);
   };
 
   Gui.prototype.editEntryClicked = function(entryId) {};
 
-  Gui.prototype.showEntryForm = function(entry) {
-    var form;
+  Gui.prototype.showEntryForm = function(entry, insulinTypes, measurementTypes) {
+    var form, insulinSelect, measurementSelect;
     form = this.createElementFor("#entry-form-template", entry);
     $(".main").append(form);
+    insulinSelect = this.createElementFor("#insulin-select-template", {
+      insulinTypes: insulinTypes
+    });
+    $("#insulin-select").append(insulinSelect);
+    measurementSelect = this.createElementFor("#measurement-select-template", {
+      measurementTypes: measurementTypes
+    });
+    $("#measurement-select").append(measurementSelect);
+    return this.renderFormElements();
+  };
+
+  Gui.prototype.renderFormElements = function() {
     $("#entry-form").dialog({
       autoOpen: true,
       modal: true,
       draggable: false,
       resizable: false,
+      closeOnEscape: false,
       position: ['center', 300],
       width: 700,
       buttons: {
@@ -74,10 +86,6 @@ Gui = (function() {
         }
       }
     });
-    return this.renderFormElements();
-  };
-
-  Gui.prototype.renderFormElements = function() {
     $("#accordion").accordion({
       collapsible: true
     });

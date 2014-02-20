@@ -22,11 +22,11 @@ Glue = (function() {
     After(this.useCase, "getEntryToEdit", function(entryId) {
       return _this.sampleData.getEntry(entryId);
     });
-    After(this.sampleData, "entryFound", function(entry) {
-      return _this.useCase.entryFound(entry);
+    After(this.sampleData, "entryFound", function(entry, insList, measList) {
+      return _this.useCase.entryFound(entry, insList, measList);
     });
-    After(this.useCase, "entryFound", function(entry) {
-      return _this.gui.showEntryForm(entry);
+    After(this.useCase, "entryFound", function(entry, insList, measList) {
+      return _this.gui.showEntryForm(entry, insList, measList);
     });
     LogAll(this.useCase);
     LogAll(this.gui);

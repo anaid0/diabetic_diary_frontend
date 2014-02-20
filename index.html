@@ -11,7 +11,22 @@
 
   <div class="main">
   </div>
-
+  <script type="x-handlebars-template" id="insulin-select-template">
+    <select>
+      <option value="default" selected="selected"></option>
+      {{#each insulinTypes}}
+        <option value={{this}}>{{this}}</option>
+      {{/each}}
+    </select>
+  </script>
+  <script type="x-handlebars-template" id="measurement-select-template">
+    <select>
+      <option value="default" selected="selected"></option>
+      {{#each measurementTypes}}
+        <option value={{this}}>{{this}}</option>
+      {{/each}}
+    </select>
+  </script>
   <script type="x-handlebars-template" id="add-new-entry-button-template">
     <div class="add-new-entry-button">
       <input type="button" id="add-new-entry-button" value="Dodaj nowy wpis"/>
@@ -107,7 +122,8 @@
             Wartość:
             <input id="measurement-value-spinner" name="measurement-value" value="{{ measurement.value }}"> mg/dl<br>
             Typ pomiaru:
-            <input type="text" name="measurement-type" value="{{ measurement.type }}"/>
+            <div id="measurement-select">
+            </div>
           </form>
         </div>
 
@@ -115,7 +131,8 @@
         <div id="add-dose">
           <form>
             Rodzaj insuliny: 
-            <input type="text" name="dose-type" value="{{ dose.insulin_type }}"/><br>
+            <div id="insulin-select">
+            </div>
             Liczba jednostek:
             <input id="dose-value-spinner" name="dose-value" value="{{ dose.value }}">
           </form>

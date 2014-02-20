@@ -4,6 +4,7 @@
 #<< gui
 #<< sample_data
 #<< glue
+#<< models
 
 class App
   constructor: ->

@@ -1,11 +1,8 @@
-# Templates:
-# add-new-entry-button
-# entries-list
-# entry-form
-
 class Gui
   constructor: ->
     #@renderFormElements()
+    @insulinTypes = []
+    @measurementTypes = []
 
   createElementFor: (templateId, data) =>
     source = $(templateId).html()
@@ -28,29 +25,33 @@ class Gui
     button.click( => @editEntryClicked(button.attr('entry-id')))
     return
 
-  addNewEntryClicked: =>
-    @showEntryForm(new Entry())
+  addNewEntryClicked: ->
+    @showEntryForm(new Entry(), [], [])
 
   editEntryClicked: (entryId) =>
 
-  showEntryForm: (entry) =>
+  showEntryForm: (entry, insulinTypes, measurementTypes) =>
     form = @createElementFor("#entry-form-template", entry)
     $(".main").append(form)
+    insulinSelect = @createElementFor("#insulin-select-template", insulinTypes : insulinTypes)
+    $("#insulin-select").append(insulinSelect)
+    measurementSelect = @createElementFor("#measurement-select-template", measurementTypes : measurementTypes)
+    $("#measurement-select").append(measurementSelect)
+    @renderFormElements()    
+
+  renderFormElements: ->
     $("#entry-form").dialog({
 　　　　　　autoOpen: true,
 　　　　　　modal: true,
 　　　　　　draggable: false,
 　　　　　　resizable: false,
+　　　　　　closeOnEscape: false,
 　　　　　　position: ['center', 300],
 　　　　　　width: 700,
 　　　　　　buttons: {
 　　　　　　　　Ok: -> $("#entry-form").remove()
 　　　　　　　　}
 　　　　})
-    @renderFormElements()
-    
-
-  renderFormElements: ->
     $("#accordion").accordion({collapsible: true})
     $("#measurement-value-spinner").spinner({ min: 0, max: 2000 })
     #$("#dose-value-spinner").spinner({ step: 0.1, numberFormat: "n", culture: "pl-PL", min: 0.1, max: 100 })
