@@ -8,6 +8,7 @@ class UseCase
 
   setInitialEntries: (entries) =>
 
+  newEntry: ->
   #addNewEntry: (entry) =>
     #@entries.push(entry)
 

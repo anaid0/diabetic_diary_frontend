@@ -26,7 +26,6 @@ class Gui
     return
 
   addNewEntryClicked: ->
-    @showEntryForm(new Entry(), [], [])
 
   editEntryClicked: (entryId) =>
 

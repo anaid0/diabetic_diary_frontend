@@ -28,6 +28,12 @@ Glue = (function() {
     After(this.useCase, "entryFound", function(entry, insList, measList) {
       return _this.gui.showEntryForm(entry, insList, measList);
     });
+    After(this.gui, "addNewEntryClicked", function() {
+      return _this.useCase.newEntry();
+    });
+    After(this.useCase, "newEntry", function() {
+      return _this.sampleData.newEntry();
+    });
     LogAll(this.useCase);
     LogAll(this.gui);
     LogAll(this.sampleData);

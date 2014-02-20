@@ -49,6 +49,10 @@ class SampleData
   removeEntry: (entryId) =>
     @entries.remove(entryId)
 
+  newEntry: ->
+    entry = new Entry()
+    entry.user = @user1
+    @entryFound(entry, @loadInsulinTypes(entry.user.id), @loadMeasurementTypes(entry.user.id))
   loadInsulinTypes: (userId) =>
     console.log("jestem w sampledata.loadInsulinTypes")
     if (@insulinTypesLists == null)

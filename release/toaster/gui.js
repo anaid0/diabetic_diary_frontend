@@ -50,9 +50,7 @@ Gui = (function() {
     });
   };
 
-  Gui.prototype.addNewEntryClicked = function() {
-    return this.showEntryForm(new Entry(), [], []);
-  };
+  Gui.prototype.addNewEntryClicked = function() {};
 
   Gui.prototype.editEntryClicked = function(entryId) {};
 

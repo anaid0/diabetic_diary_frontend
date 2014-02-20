@@ -28,6 +28,8 @@ UseCase = (function() {
 
   UseCase.prototype.setInitialEntries = function(entries) {};
 
+  UseCase.prototype.newEntry = function() {};
+
   UseCase.prototype.getEntryToEdit = function(entryId) {};
 
   UseCase.prototype.entryFound = function(entry, iList, mList) {};

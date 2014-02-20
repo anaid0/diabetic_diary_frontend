@@ -9,6 +9,9 @@ class Glue
     After(@sampleData, "entryFound", (entry, insList, measList) => @useCase.entryFound(entry, insList, measList))
     After(@useCase, "entryFound", (entry, insList, measList) => @gui.showEntryForm(entry, insList, measList))
 
+    After(@gui, "addNewEntryClicked", => @useCase.newEntry())
+    After(@useCase, "newEntry", => @sampleData.newEntry())
+
     # After(@gui, "getInsulinTypes", (userId)=> @useCase.getInsulinTypes(userId))
     # After(@useCase, "getInsulinTypes", (userId) => @sampleData.loadInsulinTypes(userId))
     # After(@sampleData, "insulinTypesLoaded", (list) => @gui.setInsulinTypes(list))

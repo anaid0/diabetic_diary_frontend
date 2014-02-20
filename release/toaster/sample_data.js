@@ -62,6 +62,13 @@ SampleData = (function() {
     return this.entries.remove(entryId);
   };
 
+  SampleData.prototype.newEntry = function() {
+    var entry;
+    entry = new Entry();
+    entry.user = this.user1;
+    return this.entryFound(entry, this.loadInsulinTypes(entry.user.id), this.loadMeasurementTypes(entry.user.id));
+  };
+
   SampleData.prototype.loadInsulinTypes = function(userId) {
     var len;
     console.log("jestem w sampledata.loadInsulinTypes");
