@@ -82,11 +82,19 @@ Gui = (function() {
       closeOnEscape: false,
       position: ['center', 300],
       width: 700,
-      buttons: {
-        Ok: function() {
-          return $("#entry-form").remove();
+      buttons: [
+        {
+          text: "Ok",
+          click: function() {
+            return this.tryToAddNewEntry;
+          }
+        }, {
+          text: "Anuluj",
+          click: function() {
+            return $("#entry-form").remove();
+          }
         }
-      }
+      ]
     });
     $("#accordion").accordion({
       collapsible: true
@@ -119,6 +127,8 @@ Gui = (function() {
       contents: '<p id="help-balloon-text">Aby dodać któryś element wpisu, kliknij w jego nazwę poniżej. <br> Do jednego wpisu możesz dodać dowolnie wybrane z poniższych elementów<br>(jedynym wymaganym elementem jest data i czas).</p>'
     });
   };
+
+  Gui.prototype.tryToAddNewEntry = function() {};
 
   return Gui;
 

@@ -26,9 +26,12 @@ Entry = (function() {
 
 User = (function() {
 
-  function User(id, name) {
+  function User(id, name, insulinTypes, measurementTypes, activityTypes) {
     this.id = id;
     this.name = name;
+    this.insulinTypes = insulinTypes != null ? insulinTypes : [];
+    this.measurementTypes = measurementTypes != null ? measurementTypes : [];
+    this.activityTypes = activityTypes != null ? activityTypes : [];
   }
 
   return User;
@@ -64,6 +67,9 @@ Meal = (function() {
     this.kcal = kcal;
     this.ww = this.carbs / 10;
     this.wbt = (this.kcal - this.carbs * 4) / 100;
+    if (this.wbt < 0) {
+      this.wbt = 0;
+    }
   }
 
   return Meal;

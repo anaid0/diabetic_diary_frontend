@@ -50,9 +50,8 @@ class Gui
 　　　　　　closeOnEscape: false,
 　　　　　　position: ['center', 300],
 　　　　　　width: 700,
-　　　　　　buttons: {
-　　　　　　　　Ok: -> $("#entry-form").remove()
-　　　　　　　　}
+　　　　　　buttons: [ { text: "Ok", click: -> @tryToAddNewEntry },
+                { text: "Anuluj", click: -> $("#entry-form").remove() } ]
 　　　　})
     $("#accordion").accordion({collapsible: true})
     $("#measurement-value-spinner").spinner({ min: 0, max: 2000 })
@@ -64,3 +63,6 @@ class Gui
     $("#datepicker").datepicker()
     $("#help-balloon").balloon({ contents: '<p id="help-balloon-text">Aby dodać któryś element wpisu, kliknij w jego nazwę poniżej. <br> Do jednego wpisu możesz dodać dowolnie wybrane z poniższych elementów<br>(jedynym wymaganym elementem jest data i czas).</p>' })
     return
+
+  tryToAddNewEntry: ->
+    

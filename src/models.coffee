@@ -4,8 +4,9 @@ class Entry
       now = new Date
       @date = "#{now.getFullYear()}-#{now.getMonth()+1}-#{now.getDate()}"
       @time = "#{now.getHours()}:#{now.getMinutes()}"
+
 class User
-  constructor: (@id, @name) ->
+  constructor: (@id, @name, @insulinTypes = [], @measurementTypes = [], @activityTypes = []) ->
 
 class Measurement
   constructor: (@value, @type) ->
@@ -17,6 +18,7 @@ class Meal
   constructor: (@carbs, @kcal) ->
     @ww = @carbs / 10
     @wbt = (@kcal - @carbs * 4) / 100
+    if @wbt < 0 then @wbt = 0
 # class Meal
 #   @ww
 #   constructor: (@meal_items, @carbs, @kcal, @wbt) ->
